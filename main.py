@@ -11,6 +11,7 @@
 
 import sys
 
+control = False
 odd_num_list = ['1', '3', '5', '7', '9']
 #------Функция проверки чисел на четность------
 def odd_check(i_num):
@@ -44,6 +45,7 @@ def final(stop_num):
     for i_num in range(1, stop_num):
         if odd_check(i_num):
             if two_digit_check(i_num):
+                control = True
                 print(i_num, end=' ')
 
 #----------------------Ввод--------------------
@@ -60,3 +62,5 @@ default(stop_num)
 
 print('Часть 2:')
 final(stop_num)
+if not control:
+    print('Подходящих чисел нет')
