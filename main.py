@@ -12,7 +12,7 @@
 import sys
 
 odd_num_list = ['1', '3', '5', '7', '9']
-
+#------Функция проверки чисел на четность------
 def odd_check(i_num):
     odd_count = 0
     for check_num in odd_num_list:
