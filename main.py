@@ -5,7 +5,7 @@
 -------------------------------------------------------------------------------------------------------
 2 часть – усложнить написанную программу, введя по своему усмотрению в условие минимум одно ограничение на
 характеристики объектов и целевую функцию для оптимизации решения.
-Задание 2: [Задание 1] + сумма цифр должна быть двузначной иметь ровно одну четную цифру в записи.
+Задание 2: [Задание 1] + сумма цифр должна быть двузначной иметь ровно одну четную цифру в записи. Целевая фунцкия это максимальная сумма цифр по модулю 7.
 '''
 
 import sys
@@ -28,7 +28,7 @@ def two_digit_check(num):
         check += int(cypher)
     if len(str(check)) == 2:
         if odd_check(check):
-            return True
+            return check
         else:
             return False
     else:
@@ -41,12 +41,25 @@ def default(stop_num):
     print()
 
 def final(stop_num):
+    solution_list = []
+    max_solution = 0
     for i_num in range(1, stop_num):
         if odd_check(i_num):
-            if two_digit_check(i_num):
+            cypher_sum = two_digit_check(i_num)
+            if isinstance(cypher_sum, int):
                 global control
                 control = True
-                print(i_num, end=' ')
+
+                formule = cypher_sum % 7
+                if max_solution < formule:
+                    max_solution = formule
+                    solution_list = [i_num]
+                elif max_solution == formule:
+                    solution_list.append(i_num)
+    for i in solution_list:
+        print(i, end=' ')
+
+
 
 #----------------------Ввод--------------------
 try:
